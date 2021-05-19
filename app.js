@@ -8,12 +8,15 @@ const retrievePokemon = () => {
         
         .then( data => {
             console.log(data);
-            const pokemon = {}
-            pokemon['name'] = data.name;
-            pokemon['id'] = data.id;
-            pokemon['image'] = data.sprites['front_default']
-            console.log(pokemon)
-        })
-}
+            const pokemon = {
+                name: data.name,
+                id: data.id,
+                image: data.sprites['front_default'],
+                type: data.types
+                    .map((type) => type.type.name)
+                    .join(', ')}
+                console.log(pokemon)
+            });
+};
 
-retrievePokemon();
+retrievePokemon()
