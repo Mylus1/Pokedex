@@ -10,13 +10,14 @@ const retrievePokemon = () => {
             fetch(
               url,
               {method: 'GET'}
-            ).then(res => {
-              console.log(res)
+            ).then(res => 
               res.json()
-            })
+            )
           )
+    }
 //Converting information gathered into useable data
     Promise.all(promises).then( results => {
+        console.log(results)
         const pokemon = results.map( (data) => ({
             name: data.name,
             id: data.id,
@@ -40,4 +41,4 @@ const displayPokemon = pokemon => {
     pokedex.innerHTML = pokemonHTMLString;
   };
 
-retrievePokemon()}
+retrievePokemon()
