@@ -21,10 +21,16 @@ const retrievePokemon = () => {
         displayPokemon(pokemon)
     })
 };
-//Logging information into the console for use later
-const displayPokemon = (pokemon) => {
-    console.log(pokemon)
-    const html = `<li>Bulbasaur</li>`
-}
+//Displaying data from api on to the web page using dynamic HTML
+const displayPokemon = pokemon => {
+    console.log(pokemon);
+    const pokemonHTMLString = pokemon
+      .map(
+        pokechan =>
+          ` <li class="card"> <img class="card-image" src="${pokechan.image}"/> <h2 class="card-title">${pokechan.id}. ${pokechan.name}</h2> <p class="card-subtitle">Type: ${pokechan.type}</p> </li> `
+      )
+      .join("");
+    pokedex.innerHTML = pokemonHTMLString;
+  };
 
 retrievePokemon()
