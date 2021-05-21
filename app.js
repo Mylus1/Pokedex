@@ -4,10 +4,17 @@ const pokedex = document.getElementById("pokedex")
 //Retrieve the data via the api and return it to the console
 const retrievePokemon = () => {
     const promises = [];
-    for (let i = 1; i<= 150; i++){
+    for (let i = 1; i<= 151; i++){
         var url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-        promises.push(fetch(url, {method: 'GET'}).then(res => res.json()))
-    }
+        promises.push(
+            fetch(
+              url,
+              {method: 'GET'}
+            ).then(res => {
+              console.log(res)
+              res.json()
+            })
+          )
 //Converting information gathered into useable data
     Promise.all(promises).then( results => {
         const pokemon = results.map( (data) => ({
@@ -33,4 +40,4 @@ const displayPokemon = pokemon => {
     pokedex.innerHTML = pokemonHTMLString;
   };
 
-retrievePokemon()
+retrievePokemon()}
