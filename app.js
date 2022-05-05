@@ -1,4 +1,4 @@
-console.log("Running Pokedex...")
+console.log("Running Pokédex...")
 
 const pokedex = document.getElementById("pokedex")
 //Retrieve the data via the api and return it to the console
